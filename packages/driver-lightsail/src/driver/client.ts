@@ -197,6 +197,8 @@ const client = ({
         res
       )
 
+      console.log('OpenInstancePublicPortsCommand 27017')
+
       await ls.putInstancePublicPorts({
         instanceName: name,
         portInfos: [
@@ -206,24 +208,18 @@ const client = ({
             protocol: 'tcp',
             cidrs: ['0.0.0.0/0'],
             ipv6Cidrs: ['::/0'],
+          },
+          {
+            fromPort: 27017,
+            toPort: 27017,
+            protocol: 'tcp',
+            cidrs: ['0.0.0.0/0'],
+            ipv6Cidrs: ['::/0'],
           }
         ],
       })
 
-      console.log('OpenInstancePublicPortsCommand 27017')
-
-      const command = new OpenInstancePublicPortsCommand({
-        instanceName: name,
-        portInfo: {
-          fromPort: 27017,
-          toPort: 27017,
-          protocol: 'tcp',
-          cidrs: ['0.0.0.0/0'],
-          ipv6Cidrs: ['::/0'],
-        }
-      })
-      await lsClient.send(command);
-
+      
       // eslint false positive here on case-sensitive filesystems due to unknown type
 
       return await extractDefined(ls.getInstance({ instanceName: name }), 'instance')
