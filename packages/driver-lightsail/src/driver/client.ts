@@ -192,13 +192,6 @@ const client = ({
         })
         : ls.createInstances({ ...commonArgs, blueprintId: 'ubuntu_24_04' })
 
-      await waitUntilAllOperationsSucceed(
-        { client: lsClient, maxWaitTime: 150 },
-        res
-      )
-
-      console.log('OpenInstancePublicPortsCommand 27017')
-
       await ls.putInstancePublicPorts({
         instanceName: name,
         portInfos: [
@@ -219,6 +212,10 @@ const client = ({
         ],
       })
 
+      await waitUntilAllOperationsSucceed(
+        { client: lsClient, maxWaitTime: 150 },
+        res
+      )
       
       // eslint false positive here on case-sensitive filesystems due to unknown type
 
