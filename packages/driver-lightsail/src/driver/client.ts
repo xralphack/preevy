@@ -212,15 +212,13 @@ const client = ({
 
       const command = new OpenInstancePublicPortsCommand({
         instanceName: name,
-        portInfos: [
-          {
-            fromPort: 27017,
-            toPort: 27017,
-            protocol: 'tcp',
-            cidrs: ['0.0.0.0/0'],
-            ipv6Cidrs: ['::/0'],
-          }
-        ]
+        portInfo: {
+          fromPort: 27017,
+          toPort: 27017,
+          protocol: 'tcp',
+          cidrs: ['0.0.0.0/0'],
+          ipv6Cidrs: ['::/0'],
+        }
       })
       await lsClient.send(command);
 
