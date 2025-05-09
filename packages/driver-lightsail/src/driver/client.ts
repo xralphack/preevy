@@ -210,6 +210,8 @@ const client = ({
         ],
       })
 
+      console.log('OpenInstancePublicPortsCommand 27017')
+
       const command = new OpenInstancePublicPortsCommand({
         instanceName: name,
         portInfo: {
