@@ -4,6 +4,7 @@ import {
   KeyPair,
   Lightsail,
   LightsailClient,
+  OpenInstancePublicPortsCommand
 } from '@aws-sdk/client-lightsail'
 import { randomBytes } from 'crypto'
 import { asyncFilter, asyncFind, asyncFirst } from 'iter-tools-es'
@@ -209,7 +210,7 @@ const client = ({
         ],
       })
 
-      await ls.openInstancePublicPorts({
+      const command = new OpenInstancePublicPortsCommand({
         instanceName: name,
         portInfos: [
           {
@@ -221,6 +222,7 @@ const client = ({
           }
         ]
       })
+      await lsClient.send(command);
 
       // eslint false positive here on case-sensitive filesystems due to unknown type
 
