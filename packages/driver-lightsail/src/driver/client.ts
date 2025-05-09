@@ -205,15 +205,21 @@ const client = ({
             protocol: 'tcp',
             cidrs: ['0.0.0.0/0'],
             ipv6Cidrs: ['::/0'],
-          },
+          }
+        ],
+      })
+
+      await ls.openInstancePublicPorts({
+        instanceName: name,
+        portInfos: [
           {
             fromPort: 27017,
             toPort: 27017,
             protocol: 'tcp',
             cidrs: ['0.0.0.0/0'],
             ipv6Cidrs: ['::/0'],
-          },
-        ],
+          }
+        ]
       })
 
       // eslint false positive here on case-sensitive filesystems due to unknown type
