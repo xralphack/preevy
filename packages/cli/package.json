@@ -33,6 +33,7 @@
     "@preevy/driver-azure": "0.0.66",
     "@preevy/driver-gce": "0.0.66",
     "@preevy/driver-kube-pod": "0.0.66",
+    "@preevy/driver-lightsail": "0.0.66-1",
     "@preevy/plugin-github": "0.0.66",
     "disposablestack": "^1.1.2",
     "inquirer-autocomplete-standalone": "^0.8.1",
